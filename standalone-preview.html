@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JASLYN KAYE TORRES // Retro Desktop Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/retro-desktop.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Standalone zero-install runtime (React 18 + Babel) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState, useRef, useEffect, useCallback, useMemo } = React;
+
+      const portfolioData = {
+        profile: {
+          name: 'Jaslyn Kaye Torres',
+          handle: 'CPE_DEV // @justlanee',
+          tagline:
+            'Computer Engineering Student & Database Administrator • Embedded Systems, Hardware Design & Software Development',
+          avatarUrl: './public/assets/me.jpg',
+          avatarFileName: 'me.jpg',
+          photos: [
+            {
+              url: './public/assets/me.jpg',
+              fileName: 'me.jpg',
+              caption: 'Jaslyn Kaye Torres — Computer Engineering (ICPEP)',
+            },
+            {
+              url: './public/assets/me-night.jpg',
+              fileName: 'me_night.jpg',
+              caption: 'Jaslyn Kaye Torres — Evening Cityscape View',
+            },
+          ],
+          statusText: 'ONLINE',
+          location: 'Marikina, Philippines',
+          bioTitle: 'about me :<',
+          bioParagraphs: [
+            {
+              text: 'Motivated Computer Engineering student with a strong foundation in hardware design, embedded systems, database administration, and digital circuit simulation, combined with practical office administration and data management experience.',
+              highlights: [
+                'Computer Engineering student',
+                'hardware design',
+                'embedded systems',
+                'database administration',
+                'digital circuit simulation',
+              ],
+            },
+            {
+              text: 'Currently serving as Database Administrator (DBA) for Project Nexus (E-ReQuest), designing offline-first database schemas and cloud synchronization alongside building ESP32/Arduino hardware prototypes and Python/Java software.',
+              highlights: [
+                'Database Administrator (DBA)',
+                'Project Nexus (E-ReQuest)',
+                'ESP32/Arduino',
+                'Python/Java',
+              ],
+            },
+          ],
+          goals:
+            'Eager to learn, adapt, and apply emerging engineering concepts and programming skills to solve complex technical challenges in embedded systems, database architecture, hardware development, or IT infrastructure.',
+          focusAreas: [
+            'Database Administration (DBA)',
+            'Embedded Systems',
+            'Hardware & PCB Design',
+            'ESP32 & Arduino IoT',
+            'Python & Java Apps',
+          ],
+        },
+        audioTrack: {
+          title: 'wave to earth - seasons (instrumental)',
+          artist: 'wave to earth',
+          sources: [
+            './public/assets/audio/seasons.webm',
+            './public/assets/audio/seasons.m4a',
+          ],
+          youtubeUrl: 'https://youtu.be/aL33a0hGbNo?si=iEqttVoZbMDA4j2l',
+          durationLabel: '04:16',
+        },
+        quickLinks: [
+          {
+            id: 'github',
+            label: 'GitHub',
+            badge: 'GH',
+            badgeColor: '#6e5494',
+            url: 'https://github.com/justlanee',
+          },
+          {
+            id: 'instagram',
+            label: 'Instagram',
+            badge: 'IG',
+            badgeColor: '#d62976',
+            url: 'https://www.instagram.com/xnuwosn?exln=MWd1M2J3a215ajFmZA==',
+          },
+          {
+            id: 'facebook',
+            label: 'Facebook',
+            badge: 'FB',
+            badgeColor: '#1877f2',
+            url: 'https://www.facebook.com/share/18XbzFZ6A3/',
+          },
+        ],
+        openSourceProjects: [
+          {
+            id: 'os-nexus',
+            name: 'project-nexus / E-ReQuest [IN PROGRESS]',
+            repoUrl: 'https://github.com/justlanee',
+            description:
+              'Capstone Project (DBA): Offline-first ICCT Campus Transaction & Student Service Guide app + Admin Web Portal using Kotlin, Room DB & Firebase.',
+            tags: ['DBA', 'Room DB', 'Firebase', 'Kotlin', 'ERD'],
+          },
+          {
+            id: 'os-electroedge',
+            name: 'electroedge',
+            repoUrl: 'https://github.com/justlanee/electroedge',
+            description:
+              'A structured study app for Computer Engineering majors offering automated score monitoring and deep learning metrics to guide their review journey.',
+            tags: ['Java', 'CpE Review', 'Score Analytics', 'Deep Learning Metrics'],
+          },
+          {
+            id: 'os-whackamole',
+            name: 'whack-a-mole',
+            repoUrl: 'https://github.com/justlanee/whack-a-mole',
+            description:
+              '"Hit the stubborn mole" — interactive Python arcade game focusing on event-driven logic, reflex timing, and score tracking.',
+            tags: ['Python', 'Game Dev', 'Event Loop', 'GUI'],
+          },
+        ],
+        projects: [
+          {
+            id: 'proj-nexus',
+            title: 'Project Nexus: E-ReQuest (Campus Transaction Guide)',
+            role: 'Database Administrator (DBA)',
+            category: 'Capstone & Database Architecture',
+            description:
+              'Currently in progress (Alpha Build completed, A.Y. 2026–2027): An offline-first Android/PWA Student Service Guide and Web Administrator Portal for ICCT Colleges Cainta Campus. As Database Administrator (DBA), designed the Entity-Relationship Diagram (ERD), data organization, Firebase cloud synchronization schema (Services, TransactionDocuments, Announcements), and local Room/storage checklist persistence with zero personal student data collection.',
+            technologies: [
+              'Database Design (ERD)',
+              'Room Database (Offline)',
+              'Firebase Sync',
+              'Kotlin & XML',
+              'Admin Web Portal',
+              'Agile / Software Design',
+            ],
+            status: 'IN_PROGRESS',
+          },
+          {
+            id: 'proj-electroedge',
+            title: 'ElectroEdge Application',
+            role: 'Developer',
+            category: 'Software & EdTech',
+            description:
+              'Developed "ElectroEdge," a structured study application tailored specifically for Computer Engineering majors. Implemented automated score monitoring features to track student performance over time and integrated deep learning metrics to analyze study patterns and guide users through exam preparation.',
+            technologies: ['Java', 'Deep Learning Metrics', 'Automated Score Monitoring', 'EdTech'],
+            repoUrl: 'https://github.com/justlanee/electroedge',
+            status: 'ONLINE',
+          },
+          {
+            id: 'proj-whackamole',
+            title: 'Whack-a-Mole Arcade Game',
+            role: 'Developer',
+            category: 'Software & Python',
+            description:
+              'Interactive "hit the stubborn mole" desktop/arcade game built in Python featuring responsive hit detection, dynamic spawn intervals, and live scorekeeping.',
+            technologies: ['Python', 'Game Logic', 'Interactive UI', 'Event Handling'],
+            repoUrl: 'https://github.com/justlanee/whack-a-mole',
+            status: 'ONLINE',
+          },
+          {
+            id: 'proj-rc-car',
+            title: 'Smartphone-Controlled Arduino Remote Control Car',
+            role: 'Embedded Systems Builder',
+            category: 'Embedded & Robotics',
+            description:
+              'Designed and built a wireless remote-controlled vehicle powered by an Arduino microcontroller and Bluetooth/Wi-Fi module. Developed an embedded C/C++ program to interpret mobile phone commands and translate them into precise motor driver outputs.',
+            technologies: ['Arduino', 'C/C++', 'Bluetooth / Wi-Fi Module', 'Motor Drivers', 'Embedded Systems'],
+            status: 'HARDWARE',
+          },
+          {
+            id: 'proj-power-supply',
+            title: 'Regulated AC-to-DC Power Supply',
+            role: 'Hardware Designer',
+            category: 'Hardware & Circuit Design',
+            description:
+              'Designed, simulated, and built a regulated AC-to-DC power supply delivering stable voltage for laboratory electronics testing. Selected transformers and implemented diode bridge rectification, capacitive filtering, and linear voltage regulation.',
+            technologies: ['Circuit Simulation', 'Schematic Diagram', 'PCB Layout', 'Bridge Rectification', 'Voltage Regulation'],
+            status: 'HARDWARE',
+          },
+        ],
+        techStack: [
+          {
+            id: 'cat-lang',
+            category: 'Programming Languages',
+            code: 'LANG.SYS',
+            skills: [
+              { name: 'C', level: 'Core', tag: 'Embedded / Low-Level' },
+              { name: 'C++', level: 'Core', tag: 'Microcontrollers / OOP' },
+              { name: 'Python', level: 'Core', tag: 'Scripting / Apps' },
+              { name: 'Java', level: 'Core', tag: 'Application Dev' },
+            ],
+          },
+          {
+            id: 'cat-db',
+            category: 'Database Administration & Architecture',
+            code: 'DBA_NEXUS.DB',
+            skills: [
+              { name: 'Database Design & ERD', level: 'DBA Role', tag: 'Project Nexus' },
+              { name: 'Data Organization & Modeling', level: 'Core', tag: 'Schema Design' },
+              { name: 'Room Database (Offline Cache)', level: 'Capstone', tag: 'Local Persistence' },
+              { name: 'Firebase Cloud Storage & Sync', level: 'Capstone', tag: 'Backend Sync' },
+            ],
+          },
+          {
+            id: 'cat-embedded',
+            category: 'Microcontrollers & Embedded Hardware',
+            code: 'MCU_DRV.HEX',
+            skills: [
+              { name: 'ESP32', level: 'Hands-on', tag: 'Wi-Fi / Bluetooth IoT' },
+              { name: 'Arduino', level: 'Hands-on', tag: 'Prototyping & Robotics' },
+              { name: 'Motor Drivers & Sensors', level: 'Hands-on', tag: 'Hardware Control' },
+              { name: 'Bluetooth / Wi-Fi Modules', level: 'Hands-on', tag: 'Wireless Telemetry' },
+            ],
+          },
+          {
+            id: 'cat-circuit',
+            category: 'Circuit, PCB & Data Operations',
+            code: 'EDA_CAD.PCB',
+            skills: [
+              { name: 'Circuit Simulation & Schematics', level: 'Core', tag: 'Digital & Analog' },
+              { name: 'PCB Layout & Power Regulation', level: 'Core', tag: 'Hardware Design' },
+              { name: 'Microsoft Excel (Formulas/QA)', level: 'Advanced', tag: 'Data Verification' },
+              { name: 'Git & GitHub', level: 'Core', tag: 'Version Control' },
+            ],
+          },
+        ],
+        experience: [
+          {
+            id: 'exp-dba',
+            role: 'Database Administrator (DBA) — Project Nexus (E-ReQuest)',
+            organization: 'ICCT Colleges • College of Engineering and Digital Technology (Capstone)',
+            period: 'A.Y. 2026 — 2027 (In Progress)',
+            location: 'Cainta, Rizal',
+            highlights: [
+              'Lead database design, data organization, and Entity-Relationship Diagram (ERD) modeling for the E-ReQuest Campus Transaction & Student Service Guide system.',
+              'Architect dual-layer persistence combining Firebase online admin synchronization with offline local storage/Room caching so students can track document checklists without internet connectivity.',
+              'Enforce privacy-first database rules with zero personal student data collection while maintaining real-time updates for school services, procedures, and announcements.',
+            ],
+          },
+          {
+            id: 'exp-office',
+            role: 'Office Staff',
+            organization: 'Administrative & Data Operations',
+            period: 'September 2026 — Present',
+            location: 'Marikina, Philippines',
+            highlights: [
+              'Manage and maintain large volumes of operational and numerical data using Microsoft Excel, ensuring high accuracy and quick retrieval.',
+              'Perform fast, accurate typing and format documents for reports, official correspondence, and administrative records.',
+              'Streamline spreadsheet workflows using Excel formulas and data verification techniques to reduce manual entry errors.',
+            ],
+          },
+        ],
+        education: [
+          {
+            id: 'edu-icct',
+            degree: 'Bachelor of Science in Computer Engineering',
+            institution: 'ICCT Colleges Foundation Inc.',
+            period: 'Expected 2027',
+            location: 'Cainta, Rizal',
+            details:
+              'College of Engineering and Digital Technology — Focused on Software Design (Project Nexus / E-ReQuest), hardware design, embedded systems (ESP32/Arduino), digital circuit simulation, and PCB layout.',
+          },
+          {
+            id: 'edu-plmar',
+            degree: 'Science, Technology, Engineering, and Mathematics (STEM)',
+            institution: 'Pamantasan ng Lungsod ng Marikina',
+            period: 'Graduated 2023',
+            location: 'Marikina City',
+            details:
+              'Senior High School STEM track foundation in mathematics, physics, electronics, and computer programming.',
+          },
+        ],
+        achievements: [
+          {
+            id: 'ach-nexus',
+            title: 'Project Nexus (E-ReQuest) — Alpha Build & System Architecture Milestone',
+            issuer: 'ICCT Colleges • Software Design Capstone (Database Administrator)',
+            year: '2026 — 2027',
+            detail:
+              'Completed ERD, UML architecture, high-fidelity prototypes, and working Alpha builds for both the E-ReQuest Admin WebApp and offline-capable Student App.',
+          },
+          {
+            id: 'ach-cpe',
+            title: 'Computer Engineering Hardware & Software Builders',
+            issuer: 'ICCT Colleges • Computer Engineering Department',
+            year: '2024 — 2026',
+            detail:
+              'Designed and built working hardware prototypes (Smartphone-Controlled Arduino RC Car, Regulated AC-to-DC Power Supply) and study software (ElectroEdge).',
+          },
+        ],
+        resume: {
+          fileName: 'Jaslyn_Kaye_Torres_Resume.pdf',
+          pdfUrl: './public/assets/resume.pdf',
+          lastUpdated: '2026',
+          summary:
+            'Official Resume of Jaslyn Kaye Torres — BS Computer Engineering student at ICCT Colleges (Marikina, Philippines).',
+        },
+        contact: {
+          email: 'jaslynkayetorres@gmail.com',
+          phone: '09915972561',
+          location: 'Marikina, Philippines',
+          availability:
+            'Open to Embedded Systems, Database Administration, Hardware Development & Software Roles',
+          githubUrl: 'https://github.com/justlanee',
+          instagramUrl: 'https://www.instagram.com/xnuwosn?exln=MWd1M2J3a215ajFmZA==',
+          facebookUrl: 'https://www.facebook.com/share/18XbzFZ6A3/',
+        },
+      };
+
+      function renderHighlightedText(text, highlights) {
+        if (!highlights || !highlights.length) return text;
+        const escaped = highlights.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        const regex = new RegExp(`(${escaped.join('|')})`, 'gi');
+        return text.split(regex).map((part, idx) =>
+          highlights.some((h) => h.toLowerCase() === part.toLowerCase()) ? (
+            <strong key={idx} className="bio-highlight">{part}</strong>
+          ) : (
+            <React.Fragment key={idx}>{part}</React.Fragment>
+          )
+        );
+      }
+
+      const UnderwaterBackground = () => (
+        <div className="aquatic-bg" aria-hidden="true">
+          <div className="aquatic-bg__rays" />
+          <svg className="aquatic-bg__scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="deepSea" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#280b2c" />
+                <stop offset="45%" stopColor="#1b0720" />
+                <stop offset="100%" stopColor="#0f0314" />
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#deepSea)" />
+            <g className="clownfish clownfish--one" transform="translate(110, 175)">
+              <ellipse cx="46" cy="24" rx="34" ry="18" fill="#ff6a28" stroke="#2a0818" strokeWidth="2" />
+              <path d="M32 7 Q37 24 32 41" stroke="#fff5ee" strokeWidth="7" fill="none" />
+              <path d="M52 8 Q57 24 52 40" stroke="#fff5ee" strokeWidth="6" fill="none" />
+              <polygon points="8,24 -10,10 -6,38" fill="#ff6a28" stroke="#2a0818" strokeWidth="2" />
+              <circle cx="68" cy="20" r="3.2" fill="#120416" />
+            </g>
+            <g className="clownfish clownfish--two" transform="translate(1285, 520)">
+              <ellipse cx="42" cy="22" rx="30" ry="16" fill="#ff7332" stroke="#2a0818" strokeWidth="2" />
+              <path d="M30 7 Q26 22 30 37" stroke="#fff5ee" strokeWidth="6" fill="none" />
+              <path d="M48 8 Q44 22 48 36" stroke="#fff5ee" strokeWidth="5.5" fill="none" />
+              <polygon points="72,22 88,10 85,34" fill="#ff7332" stroke="#2a0818" strokeWidth="2" />
+              <circle cx="22" cy="19" r="3" fill="#120416" />
+            </g>
+          </svg>
+          <div className="aquatic-bg__bubbles">
+            <span className="bubble bubble--1" />
+            <span className="bubble bubble--2" />
+            <span className="bubble bubble--3" />
+            <span className="bubble bubble--4" />
+            <span className="bubble bubble--5" />
+            <span className="bubble bubble--6" />
+          </div>
+        </div>
+      );
+
+      const WindowFrame = ({
+        id, title, isMinimized, isMaximized, isFocused, zIndex, canClose = true,
+        className = '', bodyClassName = '', statusBar, onFocus, onMinimize, onMaximize, onClose, children
+      }) => (
+        <section
+          className={`retro-window ${isFocused ? 'retro-window--focused' : 'retro-window--unfocused'} ${isMaximized ? 'retro-window--maximized' : ''} ${className}`}
+          style={{ zIndex }}
+          aria-label={title}
+          onMouseDown={() => onFocus(id)}
+        >
+          <header className="retro-window__titlebar" onDoubleClick={() => onMaximize(id)}>
+            <div className="retro-window__title-group">
+              <h2 className="retro-window__title">{title}</h2>
+            </div>
+            <div className="retro-window__controls">
+              <button type="button" className="retro-win-btn" onClick={() => onMinimize(id)} aria-label={`Minimize ${title}`}>_</button>
+              <button type="button" className="retro-win-btn" onClick={() => onMaximize(id)} aria-label={`Maximize ${title}`}>{isMaximized ? '❐' : '□'}</button>
+              {canClose && onClose && (
+                <button type="button" className="retro-win-btn retro-win-btn--close" onClick={() => onClose(id)} aria-label={`Close ${title}`}>×</button>
+              )}
+            </div>
+          </header>
+          {!isMinimized && (
+            <>
+              <div className={`retro-window__body ${bodyClassName}`}>{children}</div>
+              {statusBar && <footer className="retro-window__statusbar">{statusBar}</footer>}
+            </>
+          )}
+        </section>
+      );
+
+      const formatTime = (sec) => {
+        const m = Math.floor(sec / 60).toString().padStart(2, '0');
+        const s = Math.floor(sec % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      };
+
+      const App = () => {
+        const [activeSection, setActiveSection] = useState('home');
+        const [focusedWindow, setFocusedWindow] = useState('home');
+        const [searchQuery, setSearchQuery] = useState('');
+        const [photoIdx, setPhotoIdx] = useState(0);
+        const [zoom, setZoom] = useState(100);
+        const [musicState, setMusicState] = useState('STOPPED');
+        const [musicProgress, setMusicProgress] = useState(0);
+        const [currentTimeSec, setCurrentTimeSec] = useState(0);
+        const [durationSec, setDurationSec] = useState(256);
+        const [isMuted, setIsMuted] = useState(false);
+        const [showPdfEmbed, setShowPdfEmbed] = useState(false);
+        const audioElRef = useRef(null);
+
+        const [windows, setWindows] = useState({
+          music: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 12 },
+          quicklinks: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 13 },
+          opensource: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 14 },
+          home: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 20 },
+          projects: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 20 },
+          techstack: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 20 },
+          resume: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 20 },
+          contact: { isOpen: true, isMinimized: false, isMaximized: false, zIndex: 20 },
+        });
+
+        const toggleMinimize = (id) =>
+          setWindows((w) => ({ ...w, [id]: { ...w[id], isMinimized: !w[id].isMinimized, isMaximized: false } }));
+        const toggleMaximize = (id) =>
+          setWindows((w) => ({ ...w, [id]: { ...w[id], isMaximized: !w[id].isMaximized, isMinimized: false } }));
+        const closeWin = (id) => {
+          if (id === 'home') return;
+          setWindows((w) => ({ ...w, [id]: { ...w[id], isOpen: false } }));
+          if (id === activeSection) setActiveSection('home');
+        };
+
+        const handlePlayPause = () => {
+          const audio = audioElRef.current;
+          if (!audio) return;
+          if (musicState === 'PLAYING') {
+            audio.pause();
+            setMusicState('PAUSED');
+          } else {
+            audio.play().then(() => {
+              setMusicState('PLAYING');
+            }).catch((err) => {
+              console.warn('Audio play error:', err);
+            });
+          }
+        };
+
+        const handleStop = () => {
+          const audio = audioElRef.current;
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+          setMusicState('STOPPED');
+          setMusicProgress(0);
+          setCurrentTimeSec(0);
+        };
+
+        const handleToggleMute = () => {
+          const audio = audioElRef.current;
+          const next = !isMuted;
+          setIsMuted(next);
+          if (audio) audio.muted = next;
+        };
+
+        const q = searchQuery.trim().toLowerCase();
+        const filteredOS = q
+          ? portfolioData.openSourceProjects.filter(
+              (o) =>
+                o.name.toLowerCase().includes(q) ||
+                o.description.toLowerCase().includes(q) ||
+                o.tags.some((t) => t.toLowerCase().includes(q))
+            )
+          : portfolioData.openSourceProjects;
+
+        const filteredProjects = q
+          ? portfolioData.projects.filter(
+              (p) =>
+                p.title.toLowerCase().includes(q) ||
+                p.description.toLowerCase().includes(q) ||
+                (p.role && p.role.toLowerCase().includes(q)) ||
+                p.technologies.some((t) => t.toLowerCase().includes(q))
+            )
+          : portfolioData.projects;
+
+        const photos = portfolioData.profile.photos;
+        const currentPhoto = photos[photoIdx] || photos[0];
+
+        return (
+          <div className="retro-desktop">
+            <UnderwaterBackground />
+
+            <audio
+              ref={audioElRef}
+              preload="metadata"
+              onLoadedMetadata={(e) => {
+                if (e.currentTarget.duration && !Number.isNaN(e.currentTarget.duration)) {
+                  setDurationSec(Math.floor(e.currentTarget.duration));
+                }
+              }}
+              onTimeUpdate={(e) => {
+                const cur = e.currentTarget.currentTime;
+                const dur = e.currentTarget.duration || 256;
+                setCurrentTimeSec(Math.floor(cur));
+                setMusicProgress(Math.min(100, (cur / dur) * 100));
+              }}
+              onEnded={() => {
+                setMusicState('STOPPED');
+                setMusicProgress(0);
+                setCurrentTimeSec(0);
+              }}
+            >
+              <source src="./public/assets/audio/seasons.webm" type="audio/webm" />
+              <source src="./public/assets/audio/seasons.m4a" type="audio/mp4" />
+            </audio>
+
+            <div className="retro-desktop__shell">
+              <header className="top-nav">
+                <div className="top-nav__left">
+                  <button type="button" className="top-nav__heart-btn" onClick={() => setActiveSection('home')} aria-label="Home">♥</button>
+                  <div className="retro-search">
+                    <input
+                      type="search"
+                      className="retro-search__input"
+                      placeholder="Find: Nexus, E-ReQuest, DBA, ESP32, C++..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <nav className="top-nav__menu" aria-label="Primary Navigation">
+                  {[
+                    ['home', 'Home'],
+                    ['projects', 'My Projects'],
+                    ['techstack', 'My Techstack'],
+                    ['resume', 'Resume'],
+                    ['contact', 'Contact'],
+                  ].map(([id, label]) => (
+                    <button
+                      key={id}
+                      type="button"
+                      className={`retro-nav-btn ${activeSection === id ? 'retro-nav-btn--active' : ''}`}
+                      onClick={() => setActiveSection(id)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </nav>
+              </header>
+
+              {windows.music.isOpen && (
+                <WindowFrame
+                  id="music"
+                  title="MY_MUSIC.EXE"
+                  {...windows.music}
+                  isFocused={focusedWindow === 'music'}
+                  onFocus={setFocusedWindow}
+                  onMinimize={toggleMinimize}
+                  onMaximize={toggleMaximize}
+                  onClose={closeWin}
+                  className="music-window"
+                  bodyClassName="music-window__body"
+                >
+                  <div className="music-player">
+                    <div className="music-player__status-box">
+                      <span className={`status-led ${musicState === 'PLAYING' ? 'status-led--online' : musicState === 'PAUSED' ? 'status-led--warn' : 'status-led--idle'}`} />
+                      <span className="music-player__state-label">{musicState}</span>
+                    </div>
+                    <div className="music-player__controls">
+                      <button
+                        type="button"
+                        className="retro-btn"
+                        onClick={handlePlayPause}
+                      >
+                        {musicState === 'PLAYING' ? 'PAUSE' : 'PLAY'}
+                      </button>
+                      <button
+                        type="button"
+                        className="retro-btn"
+                        onClick={handleStop}
+                        disabled={musicState === 'STOPPED'}
+                      >
+                        STOP
+                      </button>
+                      <button
+                        type="button"
+                        className="retro-btn"
+                        onClick={handleToggleMute}
+                        title={isMuted ? 'Unmute' : 'Mute'}
+                      >
+                        {isMuted ? 'MUTE: ON' : 'VOL'}
+                      </button>
+                      <a
+                        href={portfolioData.audioTrack.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="retro-btn"
+                        title="Watch on YouTube"
+                      >
+                        YT ↗
+                      </a>
+                    </div>
+                    <div className="music-player__track-panel">
+                      <div className="music-player__track-meta">
+                        <span className="music-player__track-title">{portfolioData.audioTrack.title}</span>
+                        <span className="music-player__time">
+                          {formatTime(currentTimeSec)} / {formatTime(durationSec)}
+                        </span>
+                      </div>
+                      <div className="music-player__progress-rail">
+                        <div className="music-player__progress-fill" style={{ width: `${musicProgress}%` }} />
+                      </div>
+                    </div>
+                  </div>
+                </WindowFrame>
+              )}
+
+              <main className="retro-desktop__workspace">
+                <aside className="retro-desktop__sidebar">
+                  {windows.quicklinks.isOpen && (
+                    <WindowFrame
+                      id="quicklinks"
+                      title="QUICK_LINKS.EXE"
+                      {...windows.quicklinks}
+                      isFocused={focusedWindow === 'quicklinks'}
+                      onFocus={setFocusedWindow}
+                      onMinimize={toggleMinimize}
+                      onMaximize={toggleMaximize}
+                      onClose={closeWin}
+                      statusBar={
+                        <div className="retro-status-row">
+                          <span>{portfolioData.quickLinks.length} shortcuts</span>
+                          <span className="retro-status-online"><span className="status-led status-led--online" /> LINK_OK</span>
+                        </div>
+                      }
+                    >
+                      <ul className="quicklinks-list">
+                        {portfolioData.quickLinks.map((item) => (
+                          <li key={item.id}>
+                            <a href={item.url} target="_blank" rel="noopener noreferrer" className="quicklink-btn">
+                              <span className="quicklink-btn__badge" style={{ backgroundColor: item.badgeColor }}>{item.badge}</span>
+                              <span className="quicklink-btn__label">{item.label}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </WindowFrame>
+                  )}
+
+                  {windows.opensource.isOpen && (
+                    <WindowFrame
+                      id="opensource"
+                      title="OPEN_SOURCE.EXE"
+                      {...windows.opensource}
+                      isFocused={focusedWindow === 'opensource'}
+                      onFocus={setFocusedWindow}
+                      onMinimize={toggleMinimize}
+                      onMaximize={toggleMaximize}
+                      onClose={closeWin}
+                      className="opensource-window"
+                      statusBar={
+                        <div className="retro-status-row">
+                          <span>{filteredOS.length} projects mounted</span>
+                          <span>@justlanee</span>
+                        </div>
+                      }
+                    >
+                      <ul className="os-list">
+                        {filteredOS.map((repo) => (
+                          <li key={repo.id} className="os-card">
+                            <div className="os-card__header">
+                              <span>📁</span>
+                              <a href={repo.repoUrl} target="_blank" rel="noopener noreferrer" className="os-card__title-link">
+                                {repo.name}
+                              </a>
+                            </div>
+                            <p className="os-card__desc">{repo.description}</p>
+                            <div className="os-card__tags">
+                              {repo.tags.map((t) => <span key={t} className="retro-mini-tag">{t}</span>)}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </WindowFrame>
+                  )}
+                </aside>
+
+                <div className="retro-desktop__stage">
+                  <WindowFrame
+                    id={activeSection}
+                    title={`${activeSection.toUpperCase()}.EXE`}
+                    {...windows[activeSection]}
+                    canClose={activeSection !== 'home'}
+                    isFocused={focusedWindow === activeSection}
+                    onFocus={setFocusedWindow}
+                    onMinimize={toggleMinimize}
+                    onMaximize={toggleMaximize}
+                    onClose={closeWin}
+                    className="main-stage-window"
+                    statusBar={
+                      <div className="retro-status-row">
+                        <span>USER: JASLYN KAYE TORRES</span>
+                        <span>LOC: MARIKINA, PHILIPPINES</span>
+                        <span className="retro-status-online"><span className="status-led status-led--online" /> ONLINE</span>
+                      </div>
+                    }
+                  >
+                    {activeSection === 'home' && (
+                      <div className="home-grid">
+                        <div className="home-grid__left">
+                          <div className="identity-header">
+                            <span className="identity-header__handle">{portfolioData.profile.handle}</span>
+                            <h1 className="identity-header__name">{portfolioData.profile.name}</h1>
+                            <p className="identity-header__tagline">{portfolioData.profile.tagline}</p>
+                          </div>
+                          <div className="image-viewer">
+                            <div className="image-viewer__titlebar">
+                              <span className="image-viewer__title">IMAGE_VIEWER.EXE - [{currentPhoto.fileName}]</span>
+                              <div className="image-viewer__toolbar">
+                                <button type="button" className="retro-mini-icon-btn" onClick={() => setPhotoIdx((i) => (i - 1 + photos.length) % photos.length)} title="Previous Photo">◄</button>
+                                <button type="button" className="retro-mini-icon-btn" onClick={() => setPhotoIdx((i) => (i + 1) % photos.length)} title="Next Photo">►</button>
+                                <button type="button" className="retro-mini-icon-btn" onClick={() => setZoom((z) => Math.max(75, z - 25))}>-</button>
+                                <button type="button" className="retro-mini-icon-btn" onClick={() => setZoom(100)}>1:1</button>
+                                <button type="button" className="retro-mini-icon-btn" onClick={() => setZoom((z) => Math.min(150, z + 25))}>+</button>
+                              </div>
+                            </div>
+                            <div className="image-viewer__viewport">
+                              <img
+                                src={currentPhoto.url}
+                                alt={currentPhoto.caption}
+                                className="image-viewer__img"
+                                style={{ transform: `scale(${zoom / 100})` }}
+                              />
+                            </div>
+                            <div className="image-viewer__statusbar">
+                              <span>FILE: {currentPhoto.fileName} ({photoIdx + 1}/{photos.length})</span>
+                              <span>ZOOM: {zoom}%</span>
+                              <span className="retro-status-online"><span className="status-led status-led--online" /> ONLINE</span>
+                            </div>
+                          </div>
+
+                          <div className="identity-actions">
+                            <button type="button" className="retro-btn retro-btn--primary" onClick={() => setActiveSection('projects')}>
+                              OPEN PROJECTS.EXE ↗
+                            </button>
+                            <button type="button" className="retro-btn" onClick={() => setActiveSection('resume')}>
+                              RESUME.EXE
+                            </button>
+                            <button type="button" className="retro-btn" onClick={() => setActiveSection('contact')}>
+                              CONTACT
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="home-grid__right">
+                          <article className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">{portfolioData.profile.bioTitle}</span>
+                              <span className="retro-subpanel__code">BIO_README.TXT</span>
+                            </div>
+                            <div className="retro-subpanel__content">
+                              {portfolioData.profile.bioParagraphs.map((p, i) => (
+                                <p key={i} className="bio-panel__paragraph">{renderHighlightedText(p.text, p.highlights)}</p>
+                              ))}
+                              <p className="bio-panel__goals">
+                                <strong className="bio-highlight">Objective:</strong> {portfolioData.profile.goals}
+                              </p>
+                              <div className="focus-section">
+                                <span className="focus-section__label">Focus:</span>
+                                <div className="focus-section__tags">
+                                  {portfolioData.profile.focusAreas.map((f) => (
+                                    <span key={f} className="cyan-focus-tag">{f}</span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+
+                          <article className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">Experience & Capstone Leadership</span>
+                              <span className="retro-subpanel__code">EXP_LOG.DAT</span>
+                            </div>
+                            <div className="retro-subpanel__content">
+                              {portfolioData.experience.map((exp) => (
+                                <div key={exp.id} className="timeline-item">
+                                  <div className="timeline-item__top">
+                                    <h3 className="timeline-item__role">{exp.role}</h3>
+                                    <span className="timeline-item__period">{exp.period}</span>
+                                  </div>
+                                  <div className="timeline-item__meta">{exp.organization} • {exp.location}</div>
+                                  <ul className="timeline-item__bullets">
+                                    {exp.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </article>
+
+                          <article className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">Education</span>
+                              <span className="retro-subpanel__code">EDU_SYS.INI</span>
+                            </div>
+                            <div className="retro-subpanel__content">
+                              {portfolioData.education.map((edu) => (
+                                <div key={edu.id} className="timeline-item">
+                                  <div className="timeline-item__top">
+                                    <h3 className="timeline-item__role">{edu.degree}</h3>
+                                    <span className="timeline-item__period">{edu.period}</span>
+                                  </div>
+                                  <div className="timeline-item__meta">{edu.institution} • {edu.location}</div>
+                                  <p className="timeline-item__desc">{edu.details}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </article>
+
+                          <article className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">Technical Skills Overview</span>
+                              <button type="button" className="retro-inline-link" onClick={() => setActiveSection('techstack')}>
+                                Open TECHSTACK.EXE →
+                              </button>
+                            </div>
+                            <div className="retro-subpanel__content">
+                              <div className="skills-mini-grid">
+                                {portfolioData.techStack.map((cat) => (
+                                  <div key={cat.id} className="skills-mini-group">
+                                    <span className="skills-mini-group__title">{cat.category}:</span>
+                                    <div className="skills-mini-group__chips">
+                                      {cat.skills.map((s) => (
+                                        <span key={s.name} className="retro-mini-tag">{s.name}</span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    )}
+
+                    {activeSection === 'projects' && (
+                      <div>
+                        <div className="section-toolbar">
+                          <span className="section-toolbar__title">PROJECTS.EXE // CAPSTONE, SOFTWARE & HARDWARE BUILDS</span>
+                          <button type="button" className="retro-btn" onClick={() => setActiveSection('home')}>← Back to HOME.EXE</button>
+                        </div>
+                        <div className="projects-grid">
+                          {filteredProjects.map((project) => {
+                            const isInProgress = project.status === 'IN_PROGRESS';
+                            return (
+                              <article key={project.id} className="project-card">
+                                <header className="project-card__header">
+                                  <div>
+                                    <span className="project-card__category">
+                                      {project.category}
+                                      {project.role ? ` • Role: ${project.role}` : ''}
+                                    </span>
+                                    <h3 className="project-card__title">{project.title}</h3>
+                                  </div>
+                                  <span
+                                    className="project-card__status"
+                                    style={isInProgress ? { color: '#ffe066' } : undefined}
+                                  >
+                                    <span className={`status-led ${isInProgress ? 'status-led--warn' : 'status-led--online'}`} />
+                                    {isInProgress ? 'IN PROGRESS' : project.status}
+                                  </span>
+                                </header>
+                                <p className="project-card__desc">{project.description}</p>
+                                <div className="project-card__tech">
+                                  {project.technologies.map((t) => <span key={t} className="cyan-focus-tag">{t}</span>)}
+                                </div>
+                                <footer className="project-card__actions">
+                                  {project.repoUrl ? (
+                                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="retro-btn retro-btn--primary">
+                                      GitHub Repository ↗
+                                    </a>
+                                  ) : isInProgress ? (
+                                    <span className="retro-mini-tag" style={{ borderColor: '#ffe066', color: '#ffe066' }}>
+                                      Active Capstone Build (A.Y. 2026–2027)
+                                    </span>
+                                  ) : (
+                                    <span className="retro-mini-tag">Hardware / Lab Prototype</span>
+                                  )}
+                                </footer>
+                              </article>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {activeSection === 'techstack' && (
+                      <div>
+                        <div className="section-toolbar">
+                          <span className="section-toolbar__title">TECHSTACK.EXE // LANGUAGES, DATABASE (DBA), MICROCONTROLLERS & PCB</span>
+                          <button type="button" className="retro-btn" onClick={() => setActiveSection('home')}>← Back to HOME.EXE</button>
+                        </div>
+                        <div className="techstack-grid">
+                          {portfolioData.techStack.map((group) => (
+                            <section key={group.id} className="retro-subpanel">
+                              <header className="retro-subpanel__header">
+                                <h3 className="retro-subpanel__title">{group.category}</h3>
+                                <span className="retro-subpanel__code">{group.code}</span>
+                              </header>
+                              <div className="retro-subpanel__content tech-skill-list">
+                                {group.skills.map((skill) => (
+                                  <div key={skill.name} className="tech-skill-item">
+                                    <div className="tech-skill-item__main">
+                                      <span className="tech-skill-item__bullet">▸</span>
+                                      <span className="tech-skill-item__name">{skill.name}</span>
+                                    </div>
+                                    <div className="tech-skill-item__badges">
+                                      <span className="retro-mini-tag">{skill.tag}</span>
+                                      <span className="tech-skill-item__level">{skill.level}</span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </section>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {activeSection === 'resume' && (
+                      <div>
+                        <div className="section-toolbar">
+                          <div className="section-toolbar__filters">
+                            <a href={portfolioData.resume.pdfUrl} download={portfolioData.resume.fileName} className="retro-btn retro-btn--primary">
+                              Download Resume PDF
+                            </a>
+                            <a href={portfolioData.resume.pdfUrl} target="_blank" rel="noopener noreferrer" className="retro-btn">
+                              Open Original PDF ↗
+                            </a>
+                            <button type="button" className="retro-btn" onClick={() => setShowPdfEmbed((prev) => !prev)}>
+                              {showPdfEmbed ? 'Show Formatted CV' : 'Embed PDF Preview'}
+                            </button>
+                          </div>
+                          <button type="button" className="retro-btn" onClick={() => setActiveSection('home')}>← Back to HOME.EXE</button>
+                        </div>
+                        {showPdfEmbed ? (
+                          <div className="resume-embed-container">
+                            <object data={portfolioData.resume.pdfUrl} type="application/pdf" className="resume-embed-object">
+                              <p>Open <a href={portfolioData.resume.pdfUrl}>resume.pdf</a></p>
+                            </object>
+                          </div>
+                        ) : (
+                          <div className="resume-sheet">
+                            <header className="resume-sheet__header">
+                              <div>
+                                <h3 className="resume-sheet__name">{portfolioData.profile.name}</h3>
+                                <p className="resume-sheet__tagline">{portfolioData.profile.tagline}</p>
+                              </div>
+                              <div className="resume-sheet__meta">
+                                <span>📍 {portfolioData.contact.location}</span>
+                                <span>✉️ {portfolioData.contact.email}</span>
+                                <span>📱 {portfolioData.contact.phone}</span>
+                                <span>🔗 github.com/justlanee</span>
+                              </div>
+                            </header>
+                            <section className="resume-sheet__section">
+                              <h4 className="resume-sheet__section-title">EDUCATION</h4>
+                              {portfolioData.education.map((edu) => (
+                                <div key={edu.id} className="resume-sheet__item">
+                                  <div className="resume-sheet__row">
+                                    <strong>{edu.degree}</strong>
+                                    <span>{edu.period}</span>
+                                  </div>
+                                  <div className="resume-sheet__sub">{edu.institution} • {edu.location}</div>
+                                </div>
+                              ))}
+                            </section>
+                            <section className="resume-sheet__section">
+                              <h4 className="resume-sheet__section-title">EXPERIENCE & CAPSTONE ROLE</h4>
+                              {portfolioData.experience.map((exp) => (
+                                <div key={exp.id} className="resume-sheet__item">
+                                  <div className="resume-sheet__row">
+                                    <strong>{exp.role}</strong>
+                                    <span>{exp.period}</span>
+                                  </div>
+                                  <ul className="timeline-item__bullets">
+                                    {exp.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                                  </ul>
+                                </div>
+                              ))}
+                            </section>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {activeSection === 'contact' && (
+                      <div>
+                        <div className="section-toolbar">
+                          <span className="section-toolbar__title">CONTACT.EXE // DIRECT TRANSMISSION</span>
+                          <button type="button" className="retro-btn" onClick={() => setActiveSection('home')}>← Back to HOME.EXE</button>
+                        </div>
+                        <div className="contact-layout">
+                          <aside className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">Coordinates</span>
+                              <span className="retro-subpanel__code">NET_ADDR.CFG</span>
+                            </div>
+                            <div className="retro-subpanel__content contact-info-list">
+                              <div className="contact-info-item">
+                                <span className="contact-info-item__label">EMAIL</span>
+                                <a href={`mailto:${portfolioData.contact.email}`} className="contact-info-item__link">{portfolioData.contact.email}</a>
+                              </div>
+                              <div className="contact-info-item">
+                                <span className="contact-info-item__label">MOBILE</span>
+                                <a href={`tel:${portfolioData.contact.phone}`} className="contact-info-item__link">{portfolioData.contact.phone}</a>
+                              </div>
+                              <div className="contact-info-item">
+                                <span className="contact-info-item__label">LOCATION</span>
+                                <span className="contact-info-item__val">{portfolioData.contact.location}</span>
+                              </div>
+                              <div className="contact-info-item">
+                                <span className="contact-info-item__label">SOCIALS</span>
+                                <div className="contact-info-links">
+                                  <a href={portfolioData.contact.githubUrl} target="_blank" rel="noopener noreferrer" className="retro-btn">GitHub ↗</a>
+                                  <a href={portfolioData.contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="retro-btn">Instagram ↗</a>
+                                  <a href={portfolioData.contact.facebookUrl} target="_blank" rel="noopener noreferrer" className="retro-btn">Facebook ↗</a>
+                                </div>
+                              </div>
+                            </div>
+                          </aside>
+                          <section className="retro-subpanel">
+                            <div className="retro-subpanel__header">
+                              <span className="retro-subpanel__title">Send Email</span>
+                              <span className="retro-subpanel__code">MAILTO.EXE</span>
+                            </div>
+                            <div className="retro-subpanel__content">
+                              <p className="bio-panel__paragraph">Click below to compose a direct email to <strong>{portfolioData.contact.email}</strong>:</p>
+                              <a href={`mailto:${portfolioData.contact.email}`} className="retro-btn retro-btn--primary">
+                                Compose Email to Jaslyn Kaye Torres ↗
+                              </a>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    )}
+                  </WindowFrame>
+                </div>
+              </main>
+            </div>
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
