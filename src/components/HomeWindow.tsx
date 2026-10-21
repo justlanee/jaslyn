@@ -136,9 +136,11 @@ export const HomeWindow: React.FC<HomeWindowProps> = ({
                   {renderHighlightedText(para.text, para.highlights)}
                 </p>
               ))}
-              <p className="bio-panel__goals">
-                <strong className="bio-highlight">Objective:</strong> {profile.goals}
-              </p>
+              {profile.goals && (
+                <p className="bio-panel__goals">
+                  <strong className="bio-highlight">Objective:</strong> {profile.goals}
+                </p>
+              )}
 
               <div className="focus-section">
                 <span className="focus-section__label">Focus:</span>

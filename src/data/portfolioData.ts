@@ -30,27 +30,17 @@ export const portfolioData: PortfolioData = {
     bioTitle: 'about me :<',
     bioParagraphs: [
       {
-        text: 'Motivated Computer Engineering student with a strong foundation in hardware design, embedded systems, database administration, and digital circuit simulation, combined with practical office administration and data management experience.',
+        text: 'Motivated Computer Engineering student blending hands-on experience in hardware design, embedded systems, and digital circuit simulation with practical office administration and data management expertise. Eager to learn, adapt, and apply emerging engineering concepts and programming skills to solve complex technical challenges in software development, embedded systems, or hardware development.',
         highlights: [
           'Computer Engineering student',
           'hardware design',
           'embedded systems',
-          'database administration',
           'digital circuit simulation',
-        ],
-      },
-      {
-        text: 'Currently serving as Database Administrator (DBA) for Project Nexus (E-ReQuest), designing offline-first database schemas and cloud synchronization alongside building ESP32/Arduino hardware prototypes and Python/Java software.',
-        highlights: [
-          'Database Administrator (DBA)',
-          'Project Nexus (E-ReQuest)',
-          'ESP32/Arduino',
-          'Python/Java',
+          'software development',
         ],
       },
     ],
-    goals:
-      'Eager to learn, adapt, and apply emerging engineering concepts and programming skills to solve complex technical challenges in embedded systems, database architecture, hardware development, or IT infrastructure.',
+    goals: '',
     focusAreas: [
       'Database Administration (DBA)',
       'Embedded Systems',
