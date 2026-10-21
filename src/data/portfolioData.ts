@@ -9,8 +9,7 @@ export const portfolioData: PortfolioData = {
   profile: {
     name: 'Jaslyn Kaye Torres',
     handle: 'CPE_DEV // @justlanee',
-    tagline:
-      'Computer Engineering Student & Database Administrator • Embedded Systems, Hardware Design & Software Development',
+    tagline: 'Computer Engineering Student',
     avatarUrl: '/assets/me.jpg',
     avatarFileName: 'me.jpg',
     photos: [
