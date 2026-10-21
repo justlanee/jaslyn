@@ -232,18 +232,6 @@ export const portfolioData: PortfolioData = {
 
   experience: [
     {
-      id: 'exp-dba',
-      role: 'Database Administrator (DBA) — Project Nexus (E-ReQuest)',
-      organization: 'ICCT Colleges • College of Engineering and Digital Technology (Capstone)',
-      period: 'A.Y. 2026 — 2027 (In Progress)',
-      location: 'Cainta, Rizal',
-      highlights: [
-        'Lead database design, data organization, and Entity-Relationship Diagram (ERD) modeling for the E-ReQuest Campus Transaction & Student Service Guide system.',
-        'Architect dual-layer persistence combining Firebase online admin synchronization with offline local storage/Room caching so students can track document checklists without internet connectivity.',
-        'Enforce privacy-first database rules with zero personal student data collection while maintaining real-time updates for school services, procedures, and announcements.',
-      ],
-    },
-    {
       id: 'exp-office',
       role: 'Office Staff',
       organization: 'Administrative & Data Operations',

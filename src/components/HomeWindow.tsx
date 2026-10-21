@@ -83,7 +83,6 @@ export const HomeWindow: React.FC<HomeWindowProps> = ({
         {/* LEFT COLUMN: Developer Identity + Framed Image Viewer */}
         <div className="home-grid__left">
           <div className="identity-header">
-            <span className="identity-header__handle">{profile.handle}</span>
             <h1 className="identity-header__name">{profile.name}</h1>
             <p className="identity-header__tagline">{profile.tagline}</p>
           </div>

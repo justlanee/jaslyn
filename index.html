@@ -234,18 +234,6 @@
         ],
         experience: [
           {
-            id: 'exp-dba',
-            role: 'Database Administrator (DBA) — Project Nexus (E-ReQuest)',
-            organization: 'ICCT Colleges • College of Engineering and Digital Technology (Capstone)',
-            period: 'A.Y. 2026 — 2027 (In Progress)',
-            location: 'Cainta, Rizal',
-            highlights: [
-              'Lead database design, data organization, and Entity-Relationship Diagram (ERD) modeling for the E-ReQuest Campus Transaction & Student Service Guide system.',
-              'Architect dual-layer persistence combining Firebase online admin synchronization with offline local storage/Room caching so students can track document checklists without internet connectivity.',
-              'Enforce privacy-first database rules with zero personal student data collection while maintaining real-time updates for school services, procedures, and announcements.',
-            ],
-          },
-          {
             id: 'exp-office',
             role: 'Office Staff',
             organization: 'Administrative & Data Operations',
@@ -717,9 +705,8 @@
                       <div className="home-grid">
                         <div className="home-grid__left">
                           <div className="identity-header">
-                            <span className="identity-header__handle">{portfolioData.profile.handle}</span>
                             <h1 className="identity-header__name">{portfolioData.profile.name}</h1>
-                            <p className="identity-header__tagline">{portfolioData.profile.tagline}</p>
+                            <p className="identity-header__tagline">Computer Engineering Student</p>
                           </div>
                           <div className="image-viewer">
                             <div className="image-viewer__titlebar">
@@ -788,7 +775,7 @@
 
                           <article className="retro-subpanel">
                             <div className="retro-subpanel__header">
-                              <span className="retro-subpanel__title">Experience & Capstone Leadership</span>
+                              <span className="retro-subpanel__title">Experience</span>
                               <span className="retro-subpanel__code">EXP_LOG.DAT</span>
                             </div>
                             <div className="retro-subpanel__content">
@@ -985,7 +972,7 @@
                               ))}
                             </section>
                             <section className="resume-sheet__section">
-                              <h4 className="resume-sheet__section-title">EXPERIENCE & CAPSTONE ROLE</h4>
+                              <h4 className="resume-sheet__section-title">EXPERIENCE</h4>
                               {portfolioData.experience.map((exp) => (
                                 <div key={exp.id} className="resume-sheet__item">
                                   <div className="resume-sheet__row">
